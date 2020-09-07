@@ -4,6 +4,7 @@ Java.perform(function() {
 	Intent.getData.implementation = function () {
     var action = this.getAction() != null ? this.getAction().toString() : false;
     if (action) {
+      console.log("[*] Intent.getData() was called");
       console.log("[*] Activity: " + this.getComponent().getClassName());
       console.log("[*] Action: " + action);
       var uri = this.getData();
