@@ -1,13 +1,13 @@
 Java.perform(function() {
   var Intent = Java.use("android.content.Intent");
   Intent.getData.implementation = function () {
-      var action = this.getAction() != null ? this.getAction().toString() : false;
+      var action = this.getAction() !== null ? this.getAction().toString() : false;
       if (action) {
         console.log("[*] Intent.getData() was called");
         console.log("[*] Activity: " + this.getComponent().getClassName());
         console.log("[*] Action: " + action);
         var uri = this.getData();
-        if(uri != null){
+        if(uri !== null){
           console.log("\n[*] Data");
           uri.getScheme()   && console.log("- Scheme:\t" + uri.getScheme() + "://");
           uri.getHost()     && console.log("- Host:\t\t/" + uri.getHost());
@@ -18,6 +18,6 @@ Java.perform(function() {
           console.log("[-] No data supplied.");
         }
       }
-  		return this.getData();
+  	return this.getData();
     }
 });
