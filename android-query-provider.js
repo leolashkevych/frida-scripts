@@ -11,10 +11,6 @@
  *      queryProvider('content://com.targetapp.ProviderAuthoruty/path/', 'login=\'root\' OR id=1');
  */
 
-function queryProvider(contentUri){
-  queryProvider(contentUri, null);
-}
-
 function queryProvider(contentUri, sel){
   Java.perform(function() {
     var Uri     = Java.use("android.net.Uri");
@@ -26,7 +22,7 @@ function queryProvider(contentUri, sel){
     if(cxt){
       var resolver = cxt.getContentResolver();
       var query    = resolver.query.overload('android.net.Uri', '[Ljava.lang.String;', 'java.lang.String', '[Ljava.lang.String;', 'java.lang.String');
-      if (sel){
+      if (typeof sel !== 'undefined'){
         var cursor = query.call(resolver, uri, null, sel, null, null);
 
       }else {
